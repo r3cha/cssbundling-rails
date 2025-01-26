@@ -50,7 +50,7 @@ module Cssbundling
 
     private
 
-    def using_tool?(tool)
+    def tool_exists?(tool)
       system "command -v #{tool} > /dev/null" && LOCK_FILES[tool].any? { |file| File.exist?(file) }
     end
 
