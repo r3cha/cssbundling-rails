@@ -22,7 +22,7 @@ module Cssbundling
     extend self
 
     LOCK_FILES = {
-      bun: %w[bun.lockb bun.lock yarn.lock],
+      bun: %w[bun.lockb bun.lock],
       yarn: %w[yarn.lock],
       pnpm: %w[pnpm-lock.yaml],
       npm: %w[package-lock.json]
@@ -52,10 +52,6 @@ module Cssbundling
 
     def tool_exists?(tool)
       system "command -v #{tool} > /dev/null"
-    end
-
-    def using_tool?(tool)
-      tool_exists?(tool) && LOCK_FILES[tool].any? { |file| File.exist?(file) }
     end
 
     def using_tool?(tool)
